@@ -44,35 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       longBreakFrequency: document.getElementById("long-break-frequency-input").value
     };
 
-    //バリデーション（必須入力 → 範囲チェック → 整合性チェック の順序）
-    // 必須チェック
-    if (!settings.workDuration || !settings.shortBreak || !settings.longBreak || !settings.longBreakFrequency) {
-      alert("全ての項目を入力してください");
-      return;
-    }
-
-    // 範囲チェック
-    if (settings.workDuration < 1 || settings.workDuration > 60) {
-      alert("作業時間は1〜60分の範囲で入力してください");
-      return;
-    }
-    if (settings.shortBreak < 1 || settings.shortBreak > 60) {
-      alert("休憩時間は1〜60分の範囲で入力してください");
-      return;
-    }
-    if (settings.longBreak < 1 || settings.longBreak > 60) {
-      alert("長休憩時間は1〜60分の範囲で入力してください");
-      return;
-    }
-    if (settings.longBreakFrequency < 1 || settings.longBreakFrequency > 60) {
-      alert("長休憩の頻度は1〜60の範囲で入力してください");
-      return;
-    }
-
-
-
-
     localStorage.setItem("pomodoroSettings", JSON.stringify(settings));
     console.log("保存しました:", settings);
+    alert("設定を保存しました！"); // 保存完了のフィードバック
   });
 });

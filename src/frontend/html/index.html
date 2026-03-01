@@ -8,30 +8,10 @@
   <!-- width=device-width → ページの横幅を「その端末の画面幅」に合わせる。-->
   <!-- initial-scale=1.0 → ページを読み込んだときの拡大率を「1倍」にする。-->
 
-  <title>index-pomodoro-timer-mvp-v2</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>index-pomodoro-timer-mvp-v2.5</title>
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .header-right-links {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      /* 横並びにする */
-      gap: 10px;
-      /* 要素間の間隔を10pxに */
-      font-size: 24px;
-
-    }
-
-
-
-    .header-right-links a {
-      text-decoration: none;
-      /* 下線を消す */
-      color: black;
-    }
-
     /* 簡易メニューのスタイル */
     .menu-bar {
       display: none;
@@ -60,31 +40,41 @@
 <body>
 
   <header>
-    <div class="header-right-links">
-      <a href="login.html" class="login-link" aria-label="ログイン">ログイン</a>
-      <a href="register.html" class="register-link" aria-label="新規登録">新規登録</a>
-      <a href="setting.html" class="setting-link" aria-label="設定">&#9881;</a>
+    <div class="header-left">
+      <!-- >
+      <button href="#" id="menu-toggle" class="menu-toggle" aria-label="メニュー">&#8801;</button>
+
+      <nav id="menu-bar" class="menu-bar">
+        <a href="activity.html">今月の活動記録</a>
+      </nav>
+    </!-->
     </div>
 
-
-    <button id="menu-toggle" class="menu-toggle" aria-label="メニュー">&#8801;</button>
-    <!-- 開閉するメニューバー -->
-    <nav id="menu-bar" class="menu-bar">
-      <ul>
-        <li><a href="activity.html">今月の活動記録</a></li>
-      </ul>
-      
-    </nav>
-
+    <div class="header-right">
+      <!-- a href="login.html" class="login-link" aria-label="ログイン">ログイン</!-->
+      <!-- a href="register.html" class="register-link" aria-label="新規登録">新規登録</!-->
+      <a href="setting.html" class="setting-link" aria-label="設定">&#9881;</a>
+    </div>
   </header>
 
   <main>
+    <h2>POMODORO TIMER</h2>
+    <div class="timer-wrapper">
+      <svg id="timer-svg" viewBox="0 0 100 100" width="200" height="200">
+        <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="8" fill="none" />
+        <circle id="progress-circle" cx="50" cy="50" r="45" stroke="#00ffcc" stroke-width="8" fill="none"
+          stroke-linecap="round" transform="rotate(-90 50 50)" />
+      </svg>
+      <div class="timer-overlay">
+        <output id="timer-container"></output>
+        <p id="session-status" aria-live="polite">作業開始</p>
+      </div>
+    </div>
 
-    <div>POMODORO TIMER</div>
 
-    <p id="session-status" aria-live="polite">作業開始</p>
 
-    <output id="timer-container"></output>
+
+
 
     <button id="control-btn">▶</button>
 
@@ -96,10 +86,11 @@
 
 
 
-  <script src="../js/timer.js"></script>
+  <script src="js/timer.js"></script>
 
   <!-- インラインスクリプトで開閉制御 -->
-  <script>
+  <!-- div>
+    <script>
     const menuToggle = document.getElementById("menu-toggle");
     const menuBar = document.getElementById("menu-bar");
 
@@ -107,7 +98,9 @@
       e.preventDefault();
       menuBar.classList.toggle("open");
     });
-  </script>
+      </script>
+   </!-->
+
 </body>
 
 </html>

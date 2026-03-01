@@ -5,45 +5,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>setting-pomodoro-timer-mvp-v2</title>
-  <link rel="stylesheet" href="../css/style.css">
-
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <header>
-    <a href="index.html" class="back-link" aria-label="戻る">&#8592;</a>
+    <div class="header-left">
+      <a href="index.html" aria-label="戻る">&#8592;</a>
+    </div>
+    <div class="header-right">
+
+    </div>
   </header>
 
   <main>
-    <div>設定</div>
+    <div class="settings-container">
+      <h2>設定</h2>
 
-    <form id="settings-form">
-      <!-- テストだからvalueは短い値で設定 -->
-      <div>
-        <label for="work-duration-input">作業時間</label>
-        <input type="number" id="work-duration-input" min="1" max="60" value="2" required> 分
-      </div>
+      <form id="settings-form">
+        <table>
+          <tr>
+            <td>作業時間</td>
+            <td><input type="number" id="work-duration-input" min="1" max="60" value="2" required></td>
+            <td>分</td>
+          </tr>
 
-      <div>
-        <label for="break-duration-input">休憩時間</label>
-        <input type="number" id="break-duration-input" min="1" max="60" value="1" required> 分
-      </div>
+          <tr>
+            <td>休憩時間</td>
+            <td><input type="number" id="break-duration-input" min="1" max="60" value="1" required></td>
+            <td>分</td>
+          </tr>
 
-      <div>
-        <label for="long-break-duration-input">長休憩時間</label>
-        <input type="number" id="long-break-duration-input" min="1" max="60" value="3" required> 分
-      </div>
+          <tr>
+            <td>長休憩時間</td>
+            <td><input type="number" id="long-break-duration-input" min="1" max="60" value="3" required></td>
+            <td>分</td>
+          </tr>
 
-      <div>
-        <label for="long-break-frequency-input">長休憩の頻度</label>
-        <input type="number" id="long-break-frequency-input" min="1" max="60" value="3" required> ポモドーロにつき1回
-      </div>
+          <!-- テストだからvalueは短い値で設定 -->
 
-      <button type="submit">保存</button>
-    </form>
+          <tr>
+            <td>長休憩の頻度</td>
+            <td><input type="number" id="long-break-frequency-input" min="1" max="60" value="3" required></td>
+            <td>ポモドーロにつき１回</td>
+          </tr>
+        </table>
+
+        <button type="submit">保存</button>
+      </form>
+    </div>
   </main>
-
+  
   <script src="js/setting.js"></script>
 </body>
 

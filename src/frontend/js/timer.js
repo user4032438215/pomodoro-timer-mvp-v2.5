@@ -5,6 +5,21 @@ Notification.requestPermission().then(permission => {
   console.log("通知許可:", permission);
 });
 
+// --- アナログ表示（円形プログレス）初期化 ---
+const circle = document.getElementById("progress-circle");
+const radius = circle.r.baseVal.value;
+const circumference = 2 * Math.PI * radius;
+
+circle.style.strokeDasharray = circumference;
+circle.style.strokeDashoffset = circumference;
+
+function setProgress(percent) {
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+}
+
+
+
 // ポモドーロ回数を管理 初期値は0
 let pomodoroCount = 0;
 
@@ -116,6 +131,12 @@ function updateTimerUI(seconds) {
   const secs = seconds % 60;
   const formatted = `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   document.getElementById("timer-container").textContent = formatted; // ★
+
+  // --- アナログ表示の更新 ---
+  const total = sessionDurations[currentSession] * 60;
+  const percent = (seconds / total) * 100;
+  setProgress(percent);
+
   console.log("残り時間:", formatted);
 }
 
