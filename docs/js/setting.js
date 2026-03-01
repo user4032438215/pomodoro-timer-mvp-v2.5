@@ -46,5 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("pomodoroSettings", JSON.stringify(settings));
     console.log("保存しました:", settings);
+    alert("設定を保存しました！"); // 保存完了のフィードバック
   });
 });

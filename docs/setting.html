@@ -10,45 +10,52 @@
 
 <body>
   <header>
-    <a href="index.html" class="back-link" aria-label="戻る">&#8592;</a>
+    <div class="header-left">
+      <a href="index.html" aria-label="戻る">&#8592;</a>
+    </div>
+    <div class="header-right">
+
+    </div>
   </header>
 
   <main>
-    <div>設定</div>
+    <div class="settings-container">
+      <h2>設定</h2>
 
-    <form id="settings-form">
-      <table>
-        <tr>
-          <td>作業時間</td>
-          <td><input type="number" id="work-duration-input" min="1" max="60" value="2" required></td>
-          <td>分</td>
-        </tr>
+      <form id="settings-form">
+        <table>
+          <tr>
+            <td>作業時間</td>
+            <td><input type="number" id="work-duration-input" min="1" max="60" value="2" required></td>
+            <td>分</td>
+          </tr>
 
-        <tr>
-          <td>休憩時間</td>
-          <td><input type="number" id="break-duration-input" min="1" max="60" value="1" required></td>
-          <td>分</td>
-        </tr>
+          <tr>
+            <td>休憩時間</td>
+            <td><input type="number" id="break-duration-input" min="1" max="60" value="1" required></td>
+            <td>分</td>
+          </tr>
 
-        <tr>
-          <td>長休憩時間</td>
-          <td><input type="number" id="long-break-duration-input" min="1" max="60" value="3" required></td>
-          <td>分</td>
-        </tr>
+          <tr>
+            <td>長休憩時間</td>
+            <td><input type="number" id="long-break-duration-input" min="1" max="60" value="3" required></td>
+            <td>分</td>
+          </tr>
 
-        <!-- テストだからvalueは短い値で設定 -->
+          <!-- テストだからvalueは短い値で設定 -->
 
-        <tr>
-          <td>長休憩の頻度</td>
-          <td><input type="number" id="long-break-frequency-input" min="1" max="60" value="3" required></td>
-          <td>ポモドーロにつき１回</td>
-        </tr>
-      </table>
+          <tr>
+            <td>長休憩の頻度</td>
+            <td><input type="number" id="long-break-frequency-input" min="1" max="60" value="3" required></td>
+            <td>ポモドーロにつき１回</td>
+          </tr>
+        </table>
 
-      <button type="submit">保存</button>
-    </form>
+        <button type="submit">保存</button>
+      </form>
+    </div>
   </main>
-
+  
   <script src="js/setting.js"></script>
 </body>
 
