@@ -141,8 +141,13 @@ function updateTimerUI(seconds) {
 }
 
 // コントロールボタンの表示更新 // ★
+// function updateControlBtn(isRunning) {
+//   document.getElementById("control-btn").textContent = isRunning ? "&#9208;" : "&#9654;";
+// }
+// コントロールボタンの表示更新 innerHTMLでアイコンを表示するバージョン
 function updateControlBtn(isRunning) {
-  document.getElementById("control-btn").textContent = isRunning ? "&#9208;" : "&#9654;";
+  const btn = document.getElementById("control-btn");
+  btn.innerHTML = isRunning ? "&#9208;" : "&#9654;";
 }
 
 // ポモドーロ回数表示更新 // ★
