@@ -142,7 +142,7 @@ function updateTimerUI(seconds) {
 
 // コントロールボタンの表示更新 // ★
 function updateControlBtn(isRunning) {
-  document.getElementById("control-btn").textContent = isRunning ? "⏸" : "▶";
+  document.getElementById("control-btn").textContent = isRunning ? "&#9208;" : "&#9654;";
 }
 
 // ポモドーロ回数表示更新 // ★

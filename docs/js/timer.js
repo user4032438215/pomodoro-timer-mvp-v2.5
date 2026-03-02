@@ -1,4 +1,4 @@
- //UI層は COに★ 将来的に分割する可能性あり
+//UI層は COに★ 将来的に分割する可能性あり
 
 // Web Notifications APIの許可リクエスト
 Notification.requestPermission().then(permission => {
@@ -89,18 +89,18 @@ function countDown() {
       if (pomodoroCount % 3 === 0) {
         currentSession = "longBreak";
         console.log("長い休憩へ移行");
-        
+
       } else {
         currentSession = "shortBreak";
         console.log("短い休憩へ移行");
-        
+
       }
       console.log("ポモドーロ回数:", pomodoroCount);
     } else {
       currentSession = "work";
       console.log("作業へ戻る");
       console.log("ポモドーロ回数:", pomodoroCount);
-      
+
     }
   }
 }
@@ -142,7 +142,7 @@ function updateTimerUI(seconds) {
 
 // コントロールボタンの表示更新 // ★
 function updateControlBtn(isRunning) {
-  document.getElementById("control-btn").textContent = isRunning ? "⏸" : "▶";
+  document.getElementById("control-btn").textContent = isRunning ? "&#9208;" : "&#9654;";
 }
 
 // ポモドーロ回数表示更新 // ★
