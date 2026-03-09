@@ -140,11 +140,8 @@ function updateTimerUI(seconds) {
   console.log("残り時間:", formatted);
 }
 
-// コントロールボタンの表示更新 // ★
-// function updateControlBtn(isRunning) {
-//   document.getElementById("control-btn").textContent = isRunning ? "&#9208;" : "&#9654;";
-// }
-// コントロールボタンの表示更新 innerHTMLでアイコンを表示するバージョン
+
+// コントロールボタンの表示更新 innerHTMLでアイコンを表示するバージョン // ★
 function updateControlBtn(isRunning) {
   const btn = document.getElementById("control-btn");
   btn.innerHTML = isRunning ? "&#9208;" : "&#9654;";
@@ -156,10 +153,8 @@ function updatePomodoroCountUI() {
     `現在 ${pomodoroCount} ポモドーロ完了！`;
 }
 
-
 //コントロールタイマーイベント
 let hasStarted = false; // 初期状態は「まだ開始していない」
-
 document.getElementById("control-btn").addEventListener("click", () => {
   if (!timerId) {
     if (!hasStarted || seconds <= 0) {
@@ -180,3 +175,10 @@ document.getElementById("control-btn").addEventListener("click", () => {
     updateControlBtn(false);
   }
 });
+
+
+// --- タイマーリセット処理 ---
+//要素取得 
+const resetBtn = document.getElementById("reset-btn");
+// resetBtn.addEventListener("click", resetTimer);
+
