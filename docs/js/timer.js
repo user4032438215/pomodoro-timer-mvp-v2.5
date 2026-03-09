@@ -140,7 +140,6 @@ function updateTimerUI(seconds) {
   console.log("残り時間:", formatted);
 }
 
-
 // コントロールボタンの表示更新 innerHTMLでアイコンを表示するバージョン // ★
 function updateControlBtn(isRunning) {
   const btn = document.getElementById("control-btn");
