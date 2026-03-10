@@ -29,7 +29,6 @@ let pomodoroCount = 0; // ポモドーロ回数を管理 初期値は0
 let hasStarted = false; // タイマーが開始されたかどうかを管理するフラグ 初期値はfalse
 let timerId = null; //setInterval()が返すIDを格納する変数。初期値はタイマーが動いていないことを示すnull
 
-
 //ローカルサーバーに保存されたJSON文字列を取得
 const savedSettings = JSON.parse(localStorage.getItem("pomodoroSettings"));
 if (savedSettings) {
@@ -43,7 +42,7 @@ if (savedSettings) {
   console.log("保存された設定はありません。デフォルト設定を使用します。", sessionDurations);
 }
 
-// 進捗に応じてアナログ表記の"隠す量"を変える関数  UI層
+// 進捗に応じてアナログ表記の"隠す量"を変える関数
 function setProgress(percent) {
   const offset = circumference - (percent / 100) * circumference;
   circle.style.strokeDashoffset = offset;
@@ -86,7 +85,7 @@ function countDown() {
 
   if (seconds >= 0) {
     updateTimerUI(seconds);
-    console.log("残り時間:", formatted);
+    console.log("残り時間:", formatTime(seconds));
     return;
   }
 
@@ -108,11 +107,9 @@ function countDown() {
     pomodoroCount % sessionDurations.longBreakFrequency === 0
       ? currentSession = "longBreak"
       : currentSession = "shortBreak";
-
     console.log("現在のセッション:", currentSession);
   } else {
     currentSession = "work";
-
     console.log("現在のセッション:", currentSession);
   }
 }
@@ -131,13 +128,10 @@ function updateTimerUI(seconds) {
   const total = sessionDurations[currentSession] * 60;
   const percent = (seconds / total) * 100;
   setProgress(percent);
-
-  // デバッグ用ログ
-  console.log("残り時間:", formatted);
 }
 
 // セッションステータス表示更新
-function updasteSessionStatusUI() {
+function updateSessionStatusUI() {
   const status = document.getElementById("session-status");
 
   if (currentSession === "work") {
