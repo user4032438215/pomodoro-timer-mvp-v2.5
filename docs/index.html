@@ -7,96 +7,70 @@
   <!-- name="viewport" → 「ビューポート（表示領域）」に関する設定 -->
   <!-- width=device-width → ページの横幅を「その端末の画面幅」に合わせる。-->
   <!-- initial-scale=1.0 → ページを読み込んだときの拡大率を「1倍」にする。-->
-
   <title>index-pomodoro-timer-mvp-v2.5</title>
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    /* 簡易メニューのスタイル */
-    .menu-bar {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 10px;
-    }
-
-    .menu-bar.open {
-      display: block;
-    }
-
-    .menu-bar a {
-      display: block;
-      margin: 5px 0;
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
 
 </head>
 
 <body>
-
   <header>
     <div class="header-left">
-      <!-- >
-      <button href="#" id="menu-toggle" class="menu-toggle" aria-label="メニュー">&#8801;</button>
 
-      <nav id="menu-bar" class="menu-bar">
-        <a href="activity.html">今月の活動記録</a>
-      </nav>
-    </!-->
     </div>
 
+    <h2>POMODORO TIMER</h2>
+
     <div class="header-right">
-      <!-- a href="login.html" class="login-link" aria-label="ログイン">ログイン</!-->
-      <!-- a href="register.html" class="register-link" aria-label="新規登録">新規登録</!-->
-      <a href="setting.html" class="setting-link" aria-label="設定">&#9881;</a>
+      <button id="menu-toggle" class="menu-toggle" aria-label="メニュー">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="12" cy="12" r="2" />
+          <circle cx="12" cy="19" r="2" />
+        </svg>
+      </button>
+
+      <nav id="menu-bar" class="menu-bar">
+        <!-- a href="#" class="login-link" aria-label="ログイン">ログイン</!-->
+        <!-- a href="#" class="register-link" aria-label="新規登録">新規登録</!-->
+        <a href="setting.html">設定</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <h2>POMODORO TIMER</h2>
+  <main class="main-container">
     <div class="timer-wrapper">
       <svg id="timer-svg" viewBox="0 0 100 100" width="200" height="200">
         <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="8" fill="none" />
         <circle id="progress-circle" cx="50" cy="50" r="45" stroke="#00ffcc" stroke-width="8" fill="none"
           stroke-linecap="round" transform="rotate(-90 50 50)" />
       </svg>
+
       <div class="timer-overlay">
-        <output id="timer-container"></output>
+        <output id="timer-container" class="timer-text"></output>
         <p id="session-status" aria-live="polite">作業開始</p>
       </div>
     </div>
-
-    <button id="reset-btn">&#10005;</button>
-    <button id="control-btn">&#9654;</button>
-
-    <p id="pomodoro-count">現在 0 ポモドーロ完了！</p>
-
   </main>
 
+  <div class="button-layer">
+    <button id="reset-btn">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round">
+        <line x1="5" y1="5" x2="19" y2="19" />
+        <line x1="19" y1="5" x2="5" y2="19" />
+      </svg>
+    </button>
 
+    <button id="control-btn">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <polygon points="8,5 19,12 8,19" />
+      </svg>
+    </button>
+  </div>
 
-
+  <div id="pomodoro-count" class="pomodoro-count">現在 0 ポモドーロ完了！</div>
 
   <script src="js/timer.js"></script>
-
-  <!-- インラインスクリプトで開閉制御 -->
-  <!-- div>
-    <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const menuBar = document.getElementById("menu-bar");
-
-    menuToggle.addEventListener("click", function (e) { //preventDefaultでページリロードを防ぐために引数eを宣言
-      e.preventDefault();
-      menuBar.classList.toggle("open");
-    });
-      </script>
-   </!-->
-
 </body>
 
 </html>

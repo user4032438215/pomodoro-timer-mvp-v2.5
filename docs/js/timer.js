@@ -146,7 +146,31 @@ function updateSessionStatusUI() {
 // control-btnの表示更新 
 function updateControlBtnUI(isRunning) {
   const btn = document.getElementById("control-btn");
-  btn.innerHTML = isRunning ? "&#9208;" : "&#9654;";
+
+    const playSVG = `
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <polygon points="8,5 19,12 8,19"/>
+    </svg>
+  `;
+
+  const pauseSVG = `
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <rect x="6" y="5" width="4" height="14"/>
+      <rect x="14" y="5" width="4" height="14"/>
+    </svg>
+  `;
+
+  // btn.innerHTML = isRunning ? playSVG : pauseSVG;
+  btn.innerHTML = isRunning ? pauseSVG : playSVG;
+}
+
+// reset-btnの表示更新
+function showResetBtn() {
+  document.getElementById("reset-btn").style.display = "flex";
+}
+
+function hideResetBtn() {
+  document.getElementById("reset-btn").style.display = "none";
 }
 
 // ポモドーロ回数表示更新 
@@ -159,6 +183,7 @@ function updatePomodoroCountUI() {
 
 //control-btnイベント 
 document.getElementById("control-btn").addEventListener("click", () => {
+  showResetBtn();
   if (!timerId) {
     if (!hasStarted || seconds <= 0) {
       // 新しいセッション開始
@@ -193,3 +218,18 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   console.log("タイマーリセット");
 });
 
+// menu-toggle, menu-barイベント
+const menuToggle = document.getElementById("menu-toggle");
+const menuBar = document.getElementById("menu-bar");
+
+menuToggle.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  menuBar.classList.toggle("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
+    menuBar.classList.remove("open");
+  }
+});
