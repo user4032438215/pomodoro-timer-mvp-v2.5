@@ -18,17 +18,19 @@
         </svg>
       </a>
     </div>
+
+    <h2>設定</h2>
+
     <div class="header-right">
 
     </div>
   </header>
 
-  <main>
+  <main class="main-container">
     <div class="settings-container">
-      <h2>設定</h2>
-
       <form id="settings-form">
         <table>
+
           <tr>
             <td>作業時間</td>
             <td><input type="number" id="work-duration-input" min="1" max="60" value="2" required></td>
@@ -47,8 +49,6 @@
             <td>分</td>
           </tr>
 
-          <!-- テストだからvalueは短い値で設定 -->
-
           <tr>
             <td>長休憩の頻度</td>
             <td><input type="number" id="long-break-frequency-input" min="1" max="60" value="3" required></td>
@@ -56,8 +56,14 @@
           </tr>
         </table>
 
-        <button type="submit">保存</button>
+
+        <div class="form-btns">
+          <button class="submit-btn" type="submit">保存</button>
+        </div>
+
       </form>
+
+
     </div>
   </main>
 
