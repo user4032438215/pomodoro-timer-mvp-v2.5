@@ -43,13 +43,13 @@
 
       <div class="timer-overlay">
         <output id="timer-container" class="timer-text"></output>
-        <p id="session-status" aria-live="polite">作業開始</p>
+        <p id="session-status" class="small" aria-live="polite">作業開始</p>
       </div>
     </div>
   </main>
 
   <div class="button-layer">
-    <button id="reset-btn">
+    <button id="reset-btn" class="reset-btn">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round">
         <line x1="5" y1="5" x2="19" y2="19" />
@@ -57,9 +57,10 @@
       </svg>
     </button>
 
-    <button id="control-btn">
+    <button id="control-btn" class="control-btn">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <polygon points="8,5 19,12 8,19" />
+        <!-- <polygon points="8,5 19,12 8,19" /> -->
+         <polygon points="6,4 20,12 6,20" />
       </svg>
     </button>
   </div>

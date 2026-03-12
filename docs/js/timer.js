@@ -149,7 +149,7 @@ function updateControlBtnUI(isRunning) {
 
     const playSVG = `
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <polygon points="8,5 19,12 8,19"/>
+      <polygon points="6,4 20,12 6,20" />
     </svg>
   `;
 
