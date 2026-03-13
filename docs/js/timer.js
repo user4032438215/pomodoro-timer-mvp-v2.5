@@ -149,14 +149,14 @@ function updateControlBtnUI(isRunning) {
 
     const playSVG = `
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <polygon points="6,4 20,12 6,20" />
+      <polygon points="10,7 17,12 10,17" />
     </svg>
   `;
 
   const pauseSVG = `
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <rect x="6" y="5" width="4" height="14"/>
-      <rect x="14" y="5" width="4" height="14"/>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+      <line x1="9"  y1="6" x2="9"  y2="18" />
+      <line x1="15" y1="6" x2="15" y2="18" />
     </svg>
   `;
 

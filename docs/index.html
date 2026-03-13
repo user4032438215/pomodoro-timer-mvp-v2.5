@@ -10,18 +10,18 @@
 
 <body>
   <header>
-    <div class="header-left">
+    <div class="header-left header-links">
 
     </div>
 
     <h2>POMODORO TIMER</h2>
 
-    <div class="header-right">
+    <div class="header-right header-links">
       <button id="menu-toggle" class="menu-toggle" aria-label="メニュー">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-          <circle cx="12" cy="5" r="2" />
-          <circle cx="12" cy="12" r="2" />
-          <circle cx="12" cy="19" r="2" />
+          <circle cx="12" cy="7" r="1.5" />
+          <circle cx="12" cy="14" r="1.5" />
+          <circle cx="12" cy="21" r="1.5" />
         </svg>
       </button>
 
@@ -35,15 +35,15 @@
 
   <main class="main-container">
     <div class="timer-wrapper">
-      <svg id="timer-svg" viewBox="0 0 100 100" width="200" height="200">
-        <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="8" fill="none" />
-        <circle id="progress-circle" cx="50" cy="50" r="45" stroke="#00ffcc" stroke-width="8" fill="none"
+      <svg id="timer-svg" class="timer-svg" viewBox="0 0 100 100" width="200" height="200">
+        <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="5" fill="none" />
+        <circle id="progress-circle" class="progress-circle" cx="50" cy="50" r="45" stroke-width="5" fill="none"
           stroke-linecap="round" transform="rotate(-90 50 50)" />
       </svg>
 
       <div class="timer-overlay">
-        <output id="timer-container" class="timer-text"></output>
-        <p id="session-status" class="small" aria-live="polite">作業開始</p>
+        <output id="timer-container" class="timer-container"></output>
+        <p id="session-status" class="session-status small" aria-live="polite">作業開始</p>
       </div>
     </div>
   </main>
@@ -52,20 +52,19 @@
     <button id="reset-btn" class="reset-btn">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round">
-        <line x1="5" y1="5" x2="19" y2="19" />
-        <line x1="19" y1="5" x2="5" y2="19" />
+        <line x1="6.5" y1="11" x2="17.5" y2="22" />
+        <line x1="17.5" y1="11" x2="6.5" y2="22" />
       </svg>
     </button>
 
     <button id="control-btn" class="control-btn">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-        <!-- <polygon points="8,5 19,12 8,19" /> -->
-         <polygon points="6,4 20,12 6,20" />
+        <polygon points="10,7 17,12 10,17" />
       </svg>
     </button>
   </div>
 
-  <div id="pomodoro-count" class="pomodoro-count">現在 0 ポモドーロ完了！</div>
+  <div id="pomodoro-count" class="pomodoro-count small">現在 0 ポモドーロ完了！</div>
 
   <script src="js/timer.js"></script>
 </body>

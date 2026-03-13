@@ -40,8 +40,6 @@ header {
   justify-content: space-between; /* 左右にスペースを空ける */
 }
 
-
-
 /* ヘッダーの左側（戻るリンク） */
 .header-left {
   display: flex;
