@@ -54,6 +54,7 @@ label {
   font-size: var(--font-small);
   color: var(--font-2);
 }
+
 /* ====================================================== */
 header {
   display: flex;
@@ -115,6 +116,7 @@ header h2 {
   text-align: center;
   pointer-events: none;
 }
+
 .timer-overlay output.timer-container {
   font-size: 45px;
   font-weight: bold;
@@ -210,7 +212,6 @@ button.submit-btn {
   padding: 15px;
 }
 
-
 /* ====================================================== */
 nav.menu-bar {
   display: none;
@@ -234,3 +235,16 @@ nav.menu-bar.is-open {
 }
 
 /* ====================================================== */
+.blink {
+  animation: blinkAnime 1s infinite alternate;
+}
+
+@keyframes blinkAnime {
+  0% {
+    color: var(--font-1);
+  }
+
+  100% {
+    color: var(--bg-1);
+  }
+}

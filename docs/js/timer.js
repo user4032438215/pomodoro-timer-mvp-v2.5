@@ -28,6 +28,8 @@ let currentSession = "work"; // "work" / "shortBreak" / "longBreak" workを初�
 let pomodoroCount = 0; // ポモドーロ回数を管理 初期値は0
 let hasStarted = false; // タイマーが開始されたかどうかを管理するフラグ 初期値はfalse
 let timerId = null; //setInterval()が返すIDを格納する変数。初期値はタイマーが動いていないことを示すnull
+let shouldBlink = false; //タイマー停止時に点滅させる機能のフラグ 初期値はfalse
+
 
 //ローカルサーバーに保存されたJSON文字列を取得
 const savedSettings = JSON.parse(localStorage.getItem("pomodoroSettings"));
@@ -81,8 +83,9 @@ function startSession() {
 
 // カウントダウン処理 ロジックとUIが混ざってるけど放置
 function countDown() {
-  seconds--;
 
+  seconds--;
+  
   if (seconds >= 0) {
     updateTimerUI(seconds);
     console.log("残り時間:", formatTime(seconds));
@@ -92,7 +95,9 @@ function countDown() {
   // タイマー終了
   clearInterval(timerId);
   timerId = null;
+
   updateControlBtnUI(false);
+
   if (Notification.permission === "granted") {
     new Notification("⏰ タイマー終了！");
   }
@@ -179,6 +184,17 @@ function updatePomodoroCountUI() {
     `現在 ${pomodoroCount} ポモドーロ完了！`;
 }
 
+// --- タイマー停止時の点滅処理 ---
+function pauseBlinkingUI() {
+  const timerContainer = document.getElementById("timer-container");
+  if (timerId === null  && seconds > 0 && shouldBlink) {
+    timerContainer.classList.add("blink");
+  } else {
+    timerContainer.classList.remove("blink");
+  }
+}
+
+
 // ===============================
 
 //control-btnイベント 
@@ -192,6 +208,8 @@ document.getElementById("control-btn").addEventListener("click", () => {
     } else {
       // 停止後の再開（残り時間から続行）
       console.log("タイマー再開");
+
+
       timerId = setInterval(countDown, ONE_SECOND);
       updateControlBtnUI(true);
     }
