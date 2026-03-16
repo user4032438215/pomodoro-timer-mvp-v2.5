@@ -2,25 +2,27 @@
    全体レイアウト（ダークモード）
    =========================== */
 :root {
-  --bg-1: #141313;
-  --bg-2: #201e1e;
-  --bg-3: #2a2b2c;
+  --bg-1: hsl(0 0 0);
+  --bg-2: hsl(0 0 12);
+  --bg-3: hsl(0 0 22);
+  --bg-4: hsl(0 0 30);
 
-  --font-1: #e3e3e3;
-  --font-2: #9c9696;
+  --font-1: hsl(0 0 90);
+  --font-2: hsl(0 0 66);
+  --font-3: hsl(0 0 39);
 
-  --accent: #3669e0;
-  --accent-2: #4c79e2;
+  --accent-1: hsl(227 95 62);
+  --accent-2: hsl(227 94 50);
 
   --radius: 8px;
 
   --font-base: 16px;
-  --font-small: 14px;
-  --font-title: 22px;
+  --font-sub: 14px;
+  --font-H1: 32px;
+  --font-H2: 24px;
 }
 
 /* ====================================================== */
-
 html,
 body {
   margin: 0;
@@ -37,13 +39,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 24px;
   padding: 20px;
 }
 
-/* ===========================
-   テキスト
-   =========================== */
 p,
 td,
 label {
@@ -55,7 +54,6 @@ label {
   font-size: var(--font-small);
   color: var(--font-2);
 }
-
 /* ====================================================== */
 header {
   display: flex;
@@ -84,21 +82,14 @@ header {
 }
 
 header h2 {
-  font-size: var(--font-title);
+  font-size: var(--font-H2);
   color: var(--font-1);
   flex: 1;
   text-align: center;
   margin: 20;
 }
 
-.menu-bar {
-  display: none;
-}
-
-/* ===========================
-タイマー
-   =========================== */
-
+/* ====================================================== */
 .timer-wrapper {
   position: relative;
   width: 220px;
@@ -112,11 +103,10 @@ header h2 {
 }
 
 .progress-circle {
-  stroke: var(--accent);
+  stroke: var(--accent-1);
   /* transition: stroke-dashoffset 0.15s linear; */
 }
 
-/* 中央のデジタル表示 */
 .timer-overlay {
   position: absolute;
   top: 50%;
@@ -125,7 +115,13 @@ header h2 {
   text-align: center;
   pointer-events: none;
 }
+.timer-overlay output.timer-container {
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 4px;
+}
 
+/* ====================================================== */
 .session-status {
   font-size: var(--font-small);
   color: var(--font-2);
@@ -133,15 +129,14 @@ header h2 {
   opacity: 0.85;
 }
 
-.timer-overlay output.timer-container {
-  font-size: 45px;
-  font-weight: bold;
-  margin-top: 4px;
+.pomodoro-count {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===========================
-   ボタン
-   =========================== */
+/* ====================================================== */
 .button-layer {
   display: flex;
   align-items: center;
@@ -183,24 +178,59 @@ button.control-btn {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--accent);
+  background: var(--accent-1);
   color: var(--font-1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-button.control-btn:hover {
+button.control-btn:active {
   background: var(--accent-2);
+  transform: translateX(-50%) scale(0.96);
 }
 
-/* ====================================================== */
-
-
-/* ====================================================== */
-.pomodoro-count {
-  margin-top: 40px;
+div.form-btns {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
+
+button.submit-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-base);
+  background-color: var(--bg-3);
+  color: var(--font-1);
+  border-radius: var(--radius);
+  margin-top: 24px;
+  width: 120px;
+  /* height: 35px; */
+  padding: 15px;
+}
+
+
+/* ====================================================== */
+nav.menu-bar {
+  display: none;
+}
+
+nav.menu-bar.is-open {
+  display: flex;
+  position: absolute;
+  top: 75px;
+  right: 30px;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+  font-size: var(--font-base);
+  background-color: var(--bg-3);
+  color: var(--font-1);
+  border-radius: var(--radius);
+  width: 120px;
+  /* height: 35px; */
+  padding: 15px;
+}
+
+/* ====================================================== */

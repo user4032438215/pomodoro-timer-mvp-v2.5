@@ -147,7 +147,7 @@ function updateSessionStatusUI() {
 function updateControlBtnUI(isRunning) {
   const btn = document.getElementById("control-btn");
 
-    const playSVG = `
+  const playSVG = `
     <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
       <polygon points="10,7 17,12 10,17" />
     </svg>
@@ -223,13 +223,12 @@ const menuToggle = document.getElementById("menu-toggle");
 const menuBar = document.getElementById("menu-bar");
 
 menuToggle.addEventListener("click", (e) => {
-  e.preventDefault();
   e.stopPropagation();
-  menuBar.classList.toggle("open");
+  menuBar.classList.add("is-open");
 });
 
 document.addEventListener("click", (e) => {
   if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
-    menuBar.classList.remove("open");
+    menuBar.classList.remove("is-open");
   }
 });
