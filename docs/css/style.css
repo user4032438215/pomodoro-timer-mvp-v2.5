@@ -258,23 +258,25 @@ nav.menu-bar.is-open {
 /* ===========================
    スマホ用レスポンシブ
    =========================== */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
 
-  /* ① メニューバーを最前面に */
+  
+  /* メニューバーを最前面に */
   nav.menu-bar.is-open {
     z-index: 9999;
     top: 65px; 
     right: 20px;
+    width: 100px;
     padding: 12px;
   }
 
-  /* ② アナログタイマーを1.25倍に(220px × 1.25) */
+  /* アナログタイマーを1.25倍に(220px × 1.25) */
   .timer-wrapper {
     width: 275px;  
     height: 275px;
   }
 
-  /* ③ コントロールボタンを1.5倍に(35px × 1.5) */
+  /* コントロールボタンを1.5倍に(35px × 1.5) */
   button.control-btn,
   button.reset-btn {
     width: 52px;   
