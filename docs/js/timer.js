@@ -184,15 +184,15 @@ function updatePomodoroCountUI() {
     `現在 ${pomodoroCount} ポモドーロ完了！`;
 }
 
-// --- タイマー停止時の点滅処理 ---
-function pauseBlinkingUI() {
-  const timerContainer = document.getElementById("timer-container");
-  if (timerId === null  && seconds > 0 && shouldBlink) {
-    timerContainer.classList.add("blink");
-  } else {
-    timerContainer.classList.remove("blink");
-  }
-}
+// --- タイマー停止時の点滅処理 () ---
+// function pauseBlinkingUI() {
+//   const timerContainer = document.getElementById("timer-container");
+//   if (timerId === null  && seconds > 0 && shouldBlink) {
+//     timerContainer.classList.add("blink");
+//   } else {
+//     timerContainer.classList.remove("blink");
+//   }
+// }
 
 
 // ===============================
