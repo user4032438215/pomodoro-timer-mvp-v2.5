@@ -16,148 +16,97 @@
 
   --radius: 8px;
 
-  --font-base: 16px;
-  --font-sub: 14px;
-  --font-H1: 32px;
-  --font-H2: 24px;
+  /*transform: scale(0.95);  transition: 0.2s ease;*/
+  --press-scale: scale(0.95);
+  --press-transition: 0.2s ease;
+
+  --font-base: clamp(16px, 1.2vw, 20px);
+  --font-small: clamp(14px, 1vw, 16px);
+
+  --font-H2: clamp(20px, 3vw, 24px);
+
+  --font-timer: clamp(50px, 3vw, 70px);
+
+  --timer-size: clamp(220px, 50vw, 320px);
+
+  --btn-size: clamp(35px, 8vw, 60px);
+
+  --spacing: clamp(16px, 4vw, 24px);
 }
 
 /* ====================================================== */
-html,
-body {
+* {
   margin: 0;
   padding: 0;
-  background: var(--bg-1);
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--bg-1);
   color: var(--font-1);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: var(--font-base);
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 20px;
-}
-
-p,
-td,
-label {
-  font-size: var(--font-base);
-  color: var(--font-1);
-}
-
-.small {
-  font-size: var(--font-small);
-  color: var(--font-2);
+  height: 100%;
 }
 
 /* ====================================================== */
 header {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-}
+  /* width: 100%; */
 
-.header-links {
-  width: 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  padding: var(--spacing);
 }
 
-.header-links a {
-  color: var(--font-1);
-  text-decoration: none;
-  font-size: 22px;
-  transition: opacity 0.2s;
+.header-left {
+  /* display: flex; */
+  margin-right: auto;
+  margin-left: var(--spacing);
+
+  min-width: var(--btn-size);
 }
 
-.header-links a:hover {
-  opacity: 0.7;
-}
-
-header h2 {
+.header-mid {
+  /* display: flex; */
   font-size: var(--font-H2);
-  color: var(--font-1);
-  flex: 1;
   text-align: center;
-  margin: 20;
+}
+
+.header-right {
+  /* display: flex; */
+  margin-left: auto;
+  margin-right: var(--spacing);
+
+  min-width: var(--btn-size);
 }
 
 /* ====================================================== */
-.timer-wrapper {
-  position: relative;
-  width: 220px;
-  height: 220px;
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-.timer-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.progress-circle {
-  stroke: var(--accent-1);
-  /* transition: stroke-dashoffset 0.15s linear; */
-}
-
-.timer-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  pointer-events: none;
-}
-
-.timer-overlay output.timer-container {
-  font-size: 45px;
-  font-weight: bold;
-  margin-top: 4px;
-}
-
-/* ====================================================== */
-.session-status {
-  font-size: var(--font-small);
-  color: var(--font-2);
-  margin: 0;
-  opacity: 0.85;
-}
-
-.pomodoro-count {
-  margin-top: 40px;
+main {
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-/* ====================================================== */
-.button-layer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  position: relative;
-  width: 100%;
+  flex-direction: column;
+
+  gap: var(--spacing);
+  padding: var(--spacing);
 }
 
 button {
-  background: var(--bg-1);
-  color: var(--font-1);
-  font-size: var(--font-base);
   border: none;
-  width: 35px;
-  height: 35px;
+  width: var(--btn-size);
+  height: var(--btn-size);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  background-color: var(--bg-1);
+  color: var(--font-1);
 }
 
 button:hover {
@@ -165,80 +114,198 @@ button:hover {
 }
 
 button:active {
-  transform: scale(0.96);
-}
-
-button.reset-btn {
-  display: none;
-  background: var(--bg-2);
-  color: var(--font-1);
-  position: absolute;
-  left: calc(50% - 75px);
-}
-
-button.control-btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--accent-1);
-  color: var(--font-1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button.control-btn:active {
-  background: var(--accent-2);
-  transform: translateX(-50%) scale(0.96);
-}
-
-div.form-btns {
-  display: flex;
-  justify-content: center;
-}
-
-button.submit-btn {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-base);
-  background-color: var(--bg-3);
-  color: var(--font-1);
-  border-radius: var(--radius);
-  margin-top: 24px;
-  width: 120px;
-  /* height: 35px; */
-  padding: 15px;
+  transform: var(--press-scale);
+  transition: var(--press-transition);
 }
 
 /* ====================================================== */
+/* button.menu-toggle {
+  background-color: var(--bg-1);
+}
+
+button.menu-toggle:hover {
+  background-color: var(--bg-2);
+}
+
 nav.menu-bar {
   display: none;
+}
+
+nav.menu-bar.is-open {
+  display: block;
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  
+  
+  
+  background-color: var(--bg-2);
+  color: var(--font-1);
+  border-radius: var(--radius);
 }
 
 nav.menu-bar a {
   color: var(--font-1);
   font-size: var(--font-base);
   text-decoration: none;
+} */
+
+
+/* ====================================================== */
+a.btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  border: none;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--bg-1);
+  color: var(--font-1);
 }
 
-nav.menu-bar.is-open {
-  display: flex;
-  position: absolute;
-  top: 75px;
-  right: 30px;
-  flex-direction: row;
-  align-items: center;
-  /* justify-content: center; */
-  /* font-size: var(--font-base); */
-  background-color: var(--bg-3);
-  color: var(--font-1);
-  border-radius: var(--radius);
-  width: 120px;
-  /* height: 35px; */
-  padding: 15px;
+a.btn-circle:hover {
+  background: var(--bg-3);
 }
+
+a.btn-circle:active {
+  transform: var(--press-scale);
+  transition: var(--press-transition);
+}
+
+/* ====================================================== */
+div.form-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing) 0;
+}
+
+button.submit-btn {
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(120px, 3vw, 200px);
+  height: clamp(60px, 3vw, 100px);
+  border-radius: var(--radius);
+  font-size: var(--font-base);
+  background-color: var(--bg-2);
+}
+
+button.submit-btn:hover {
+  background-color: var(--bg-3);
+}
+
+/* ====================================================== */
+.main-container-flexbox {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* ====================================================== */
+.timer-wrapper-flexitems {
+  flex-shrink: 0;
+  width: var(--timer-size);
+  height: var(--timer-size);
+  aspect-ratio: 1;
+}
+
+.timer-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  z-index: 1;
+}
+
+.progress-circle {
+  stroke: var(--accent-1);
+  transition: stroke-dashoffset 0.15s linear;
+}
+
+/* ====================================================== */
+.timer-overlay-flexitems {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  gap: clamp(4px, 1vw, 8px);
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.timer-container {
+  font-size: var(--font-timer);
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0;
+}
+
+
+.session-status {
+  color: var(--font-2);
+  margin: 0 var(--spacing);
+}
+
+/* ====================================================== */
+.button-layer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: var(--spacing);
+
+  height: var(--btn-size);
+  width: 100%;
+
+  gap: var(--btn-size);
+}
+
+.refresh-btn {
+  order: 1;
+
+  background-color: var(--bg-2);
+}
+
+.control-btn {
+  order: 2;
+  background-color: var(--accent-1);
+
+}
+
+button.control-btn:hover {
+  background: var(--accent-2);
+}
+
+/* ====================================================== */
+.pomodoro-count {
+  margin-top: var(--spacing);
+  text-align: center;
+  font-size: var(--font-base);
+  color: var(--font-2);
+}
+
+/* ====================================================== */
+
 
 /* ====================================================== */
 .blink {
@@ -252,48 +319,5 @@ nav.menu-bar.is-open {
 
   100% {
     color: var(--bg-1);
-  }
-}
-
-/* ===========================
-   スマホ用レスポンシブ
-   =========================== */
-@media (max-width: 600px) {
-
-  
-  /* メニューバーを最前面に */
-  nav.menu-bar.is-open {
-    z-index: 9999;
-    top: 65px; 
-    right: 20px;
-    width: 100px;
-    padding: 12px;
-  }
-
-  /* アナログタイマーを1.25倍に(220px × 1.25) */
-  .timer-wrapper {
-    width: 275px;  
-    height: 275px;
-  }
-
-  /* コントロールボタンを1.5倍に(35px × 1.5) */
-  button.control-btn,
-  button.reset-btn {
-    width: 52px;   
-    height: 52px;
-  }
-
-  button.control-btn svg,
-  button.reset-btn svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  .button-layer {
-    margin-top: 120px; 
-  }
-
-  .timer-overlay output.timer-container {
-    font-size: 52px;
   }
 }

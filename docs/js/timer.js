@@ -85,7 +85,7 @@ function startSession() {
 function countDown() {
 
   seconds--;
-  
+
   if (seconds >= 0) {
     updateTimerUI(seconds);
     console.log("残り時間:", formatTime(seconds));
@@ -118,9 +118,6 @@ function countDown() {
     console.log("現在のセッション:", currentSession);
   }
 }
-
-//Audio Feature_Phone-Ringtone01-3(Low).mp3
-
 
 // ===============================
 // ③ UI層（UI Layer）
@@ -156,30 +153,29 @@ function updateControlBtnUI(isRunning) {
   const btn = document.getElementById("control-btn");
 
   const playSVG = `
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <polygon points="10,7 17,12 10,17" />
-    </svg>
+      <span class="material-symbols-outlined">
+        play_arrow
+      </span>
   `;
 
   const pauseSVG = `
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
-      <line x1="9"  y1="6" x2="9"  y2="18" />
-      <line x1="15" y1="6" x2="15" y2="18" />
-    </svg>
+      <span class="material-symbols-outlined">
+        pause
+      </span>
   `;
 
   // btn.innerHTML = isRunning ? playSVG : pauseSVG;
   btn.innerHTML = isRunning ? pauseSVG : playSVG;
 }
 
-// reset-btnの表示更新
-function showResetBtn() {
-  document.getElementById("reset-btn").style.display = "flex";
-}
+// refresh-btnの表示更新 廃止 active/inactiveのtoggleに変更要諦
+// function showRefreshBtn() {
+//   document.getElementById("refresh-btn").style.display = "flex";
+// }
 
-function hideResetBtn() {
-  document.getElementById("reset-btn").style.display = "none";
-}
+// function hideRefreshBtn() {
+//   document.getElementById("refresh-btn").style.display = "none";
+// }
 
 // ポモドーロ回数表示更新 
 function updatePomodoroCountUI() {
@@ -202,7 +198,8 @@ function updatePomodoroCountUI() {
 
 //control-btnイベント 
 document.getElementById("control-btn").addEventListener("click", () => {
-  showResetBtn();
+  // showRefreshBtn();
+
   if (!timerId) {
     if (!hasStarted || seconds <= 0) {
       // 新しいセッション開始
@@ -225,8 +222,8 @@ document.getElementById("control-btn").addEventListener("click", () => {
   }
 });
 
-// reset-btnイベント
-document.getElementById("reset-btn").addEventListener("click", () => {
+// refresh-btnイベント
+document.getElementById("refresh-btn").addEventListener("click", () => {
 
   clearInterval(timerId); // タイマーを停止
   timerId = null; // タイマーIDをリセット
@@ -234,22 +231,22 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 
   initSession(); // セッションを初期化して表示を更新
 
-  updateControlBtnUI(false); // コントロールボタンを「開始」状態に更新
+  updateControlBtnUI(false); 
 
   console.log("タイマーリセット");
 });
 
-// menu-toggle, menu-barイベント
-const menuToggle = document.getElementById("menu-toggle");
-const menuBar = document.getElementById("menu-bar");
+// menu-toggle, menu-barイベント 廃止 btn-circleって疑似クラスでaをbuttonっぽくふるまうように変更
+// const menuToggle = document.getElementById("menu-toggle");
+// const menuBar = document.getElementById("menu-bar");
 
-menuToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  menuBar.classList.add("is-open");
-});
+// menuToggle.addEventListener("click", (e) => {
+//   e.stopPropagation();
+//   menuBar.classList.add("is-open");
+// });
 
-document.addEventListener("click", (e) => {
-  if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
-    menuBar.classList.remove("is-open");
-  }
-});
+// document.addEventListener("click", (e) => {
+//   if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
+//     menuBar.classList.remove("is-open");
+//   }
+// });
