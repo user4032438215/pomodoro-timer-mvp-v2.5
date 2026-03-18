@@ -282,8 +282,16 @@ button.submit-btn:hover {
 
 .refresh-btn {
   order: 1;
-
   background-color: var(--bg-2);
+}
+
+button.refresh-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button.refresh-btn[disabled] .material-symbols-outlined {
+  color: var(--font-3);
 }
 
 .control-btn {

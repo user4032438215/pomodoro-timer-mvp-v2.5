@@ -199,19 +199,22 @@ function updatePomodoroCountUI() {
 //control-btnイベント 
 document.getElementById("control-btn").addEventListener("click", () => {
   // showRefreshBtn();
+  //refresh-btn disabled→able 
+  const refreshBtn = document.getElementById("refresh-btn");
+  refreshBtn.disabled = true;
 
   if (!timerId) {
     if (!hasStarted || seconds <= 0) {
       // 新しいセッション開始
       startSession();
       hasStarted = true;
+      refreshBtn.disabled = false;
     } else {
       // 停止後の再開（残り時間から続行）
       console.log("タイマー再開");
-
-
       timerId = setInterval(countDown, ONE_SECOND);
       updateControlBtnUI(true);
+      refreshBtn.disabled = false;
     }
   } else {
     //停止処理
@@ -219,6 +222,7 @@ document.getElementById("control-btn").addEventListener("click", () => {
     clearInterval(timerId);
     timerId = null;
     updateControlBtnUI(false);
+    refreshBtn.disabled = false;
   }
 });
 
@@ -231,7 +235,7 @@ document.getElementById("refresh-btn").addEventListener("click", () => {
 
   initSession(); // セッションを初期化して表示を更新
 
-  updateControlBtnUI(false); 
+  updateControlBtnUI(false);
 
   console.log("タイマーリセット");
 });
