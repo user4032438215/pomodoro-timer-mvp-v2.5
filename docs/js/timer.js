@@ -166,7 +166,6 @@ function updateControlBtnUI(isRunning) {
       </span>
   `;
 
-  // btn.innerHTML = isRunning ? playSVG : pauseSVG;
   btn.innerHTML = isRunning ? pauseSVG : playSVG;
 }
 
@@ -232,18 +231,3 @@ document.getElementById("refresh-btn").addEventListener("click", () => {
 
   console.log("タイマーリセット");
 });
-
-// menu-toggle, menu-barイベント 廃止 btn-circleって疑似クラスでaをbuttonっぽくふるまうように変更
-// const menuToggle = document.getElementById("menu-toggle");
-// const menuBar = document.getElementById("menu-bar");
-
-// menuToggle.addEventListener("click", (e) => {
-//   e.stopPropagation();
-//   menuBar.classList.add("is-open");
-// });
-
-// document.addEventListener("click", (e) => {
-//   if (!menuBar.contains(e.target) && !menuToggle.contains(e.target)) {
-//     menuBar.classList.remove("is-open");
-//   }
-// });
