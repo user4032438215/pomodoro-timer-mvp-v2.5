@@ -99,7 +99,9 @@ function countDown() {
   updateControlBtnUI(false);
 
   if (Notification.permission === "granted") {
-    new Notification("⏰ タイマー終了！");
+    new Notification("タイマー終了！");
+  } else {
+    alert("タイマー終了！");
   }
   console.log("タイマー終了！");
 
@@ -140,11 +142,11 @@ function updateSessionStatusUI() {
   const status = document.getElementById("session-status");
 
   if (currentSession === "work") {
-    status.textContent = "💼 作業中";
+    status.textContent = "作業中";
   } else if (currentSession === "shortBreak") {
-    status.textContent = "☕ 休憩中";
+    status.textContent = "休憩中";
   } else if (currentSession === "longBreak") {
-    status.textContent = "🌿 長めの休憩中";
+    status.textContent = "長めの休憩中";
   }
 }
 
@@ -167,15 +169,6 @@ function updateControlBtnUI(isRunning) {
   // btn.innerHTML = isRunning ? playSVG : pauseSVG;
   btn.innerHTML = isRunning ? pauseSVG : playSVG;
 }
-
-// refresh-btnの表示更新 廃止 active/inactiveのtoggleに変更要諦
-// function showRefreshBtn() {
-//   document.getElementById("refresh-btn").style.display = "flex";
-// }
-
-// function hideRefreshBtn() {
-//   document.getElementById("refresh-btn").style.display = "none";
-// }
 
 // ポモドーロ回数表示更新 
 function updatePomodoroCountUI() {

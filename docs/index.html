@@ -19,17 +19,7 @@
       <h2>POMODORO TIMER</h2>
     </div>
 
-
     <div class="header-right">
-      <!-- <button id="menu-toggle" class="menu-toggle" aria-label="メニュー">
-        <span class="material-symbols-outlined">
-          more_vert
-        </span>
-      </button> -->
-
-      <!-- <nav id="menu-bar" class="menu-bar">
-        <a href="setting.html">設定</a>
-      </nav> -->
       <a href="setting.html" class="btn-circle more_vert" aria-label="設定">
         <span class="material-symbols-outlined">
           more_vert
@@ -38,8 +28,8 @@
     </div>
   </header>
 
-  <main class="main-container-flexbox">
-    <div class="timer-wrapper-flexitems">
+  <main class="main-container">
+    <div class="timer-wrapper">
       <svg id="timer-svg" class="timer-svg" viewBox="0 0 100 100" width="200" height="200">
         <circle cx="50" cy="50" r="45" stroke="#333" stroke-width="5" fill="none" />
         <circle id="progress-circle" class="progress-circle" cx="50" cy="50" r="45" stroke-width="5" fill="none"
@@ -47,7 +37,7 @@
       </svg>
     </div>
 
-    <div class="timer-overlay-flexitems">
+    <div class="timer-overlay">
       <output id="timer-container" class="timer-container"></output>
       <p id="session-status" class="session-status" aria-live="polite">作業開始</p>
     </div>
@@ -70,7 +60,9 @@
     </button>
   </div>
 
-  <div id="pomodoro-count" class="pomodoro-count">現在 0 ポモドーロ完了！</div>
+  <div class="sub-container">
+    <div id="pomodoro-count" class="pomodoro-count">現在 0 ポモドーロ完了！</div>
+  </div>
 
   <script src="js/timer.js"></script>
 </body>
