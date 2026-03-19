@@ -73,6 +73,35 @@ function initSession() {
   updateTimerUI(seconds);
 }
 
+function notifyTimerEnd() {
+  try {
+    if (!("Notification" in window)) {
+      alert("タイマー終了！");
+      return;
+    }
+
+    if (Notification.permission === "granted") {
+      new Notification("タイマー終了！");
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          new Notification("タイマー終了！");
+        } else {
+          alert("タイマー終了！");
+        }
+      }).catch(() => {
+        alert("タイマー終了！");
+      });
+    } else {
+      alert("タイマー終了！");
+    }
+  } catch (e) {
+    alert("タイマー終了！");
+  }
+
+  console.log("タイマー終了！");
+}
+
 // セッション開始
 function startSession() {
   initSession();
@@ -98,12 +127,14 @@ function countDown() {
 
   updateControlBtnUI(false);
 
-  if (Notification.permission === "granted") {
-    new Notification("タイマー終了！");
-  } else {
-    alert("タイマー終了！");
-  }
-  console.log("タイマー終了！");
+  // if (Notification.permission === "granted") {
+  //   new Notification("タイマー終了！");
+  // } else {
+  //   alert("タイマー終了！");
+  // }
+  // console.log("タイマー終了！");
+
+  notifyTimerEnd();
 
   // セッション切り替えと UI（updatePomodoroCountUI）が混ざってるけど放置
   if (currentSession === "work") {
